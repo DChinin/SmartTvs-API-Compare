@@ -5,6 +5,13 @@ exports.year = '2011';
 
 exports.template = [
   {
+    title: 'Browser engine',
+    id: 0,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
     title: 'storage',
     id: 1,
     enable: '',
@@ -75,7 +82,7 @@ exports.template = [
     link: ''
   },
   {
-    title: 'get product code',
+    title: 'get hardware version',
     id: 11,
     enable: '',
     text: '',

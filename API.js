@@ -1,5 +1,9 @@
 exports.api = [
   {
+    title: 'Browser engine',
+    id: 0
+  },
+  {
     title: 'storage',
     id: 1
   },
@@ -44,7 +48,7 @@ exports.api = [
     id: 11
   },
   {
-    title: 'get platform version',
+    title: 'get hardware version',
     id: 12
   },
   {
@@ -106,5 +110,37 @@ exports.api = [
   {
     title: 'Player',
     id: 27
+  },
+  {
+    title: 'support 3d',
+    id: 28
+  },
+  {
+    title: 'Player buffering controls',
+    id: 29
+  },
+  {
+    title: 'Player support subtitle',
+    id: 30
+  },
+  {
+    title: 'Player adjust playing speed',
+    id: 31
+  },
+  {
+    title: 'Player support playlists',
+    id: 32
+  },
+  {
+    title: 'Player media info',
+    id: 33
+  },
+  {
+    title: 'Player change sizes',
+    id: 34
+  },
+  {
+    title: 'Player support audio language',
+    id: 35
   }
 ];
