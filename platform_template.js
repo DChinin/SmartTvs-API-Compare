@@ -199,5 +199,61 @@ exports.template = [
     enable: '',
     text: '',
     link: ''
+  },
+  {
+    title: 'support 3d',
+    id: 28,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player buffering controls',
+    id: 29,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player support subtitle',
+    id: 30,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player adjust playing speed',
+    id: 31,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player support playlists',
+    id: 32,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player media info',
+    id: 33,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player change sizes',
+    id: 34,
+    enable: '',
+    text: '',
+    link: ''
+  },
+  {
+    title: 'Player support audio language',
+    id: 35,
+    enable: '',
+    text: '',
+    link: ''
   }
 ];
