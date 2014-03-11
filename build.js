@@ -1,15 +1,18 @@
 var fs = require('fs');
 var api = require('./API');
 var lg = require('./platforms/lg');
-//var htmlTemplate = fs.readFileSync(__dirname + '/template.html', 'utf-8');
+var samsung = require('./platforms/samsung');
+var targetFile = 'index.html';
+var htmlTemplate = fs.readFileSync(__dirname + '/template.html', 'utf-8');
 
-var platforms = [];
-platforms.push(lg);
+var platforms = [samsung, lg];
 
 generate(api, platforms);
 
 function generate(apiTitles, platforms) {
-  var api = {};
+  var api = {},
+    platformsNames = [],
+    html;
 
   apiTitles.api.forEach(function ( item ) {
     if (api[item.id]) {
@@ -22,10 +25,12 @@ function generate(apiTitles, platforms) {
   });
 
   platforms.forEach(function (platform) {
+    platformsNames.push(platform.platform);
     api = mergeData(api, platform);
   });
 
-  console.log(api);
+  html = generateTableHtml(api, platformsNames);
+  saveHtml(html);
 }
 
 function mergeData (api, platform) {
@@ -51,8 +56,52 @@ function mergeData (api, platform) {
   return api;
 }
 
+function generateTableHtml( api, titles ) {
+  var length = titles.length,
+    result = '<table><thead><tr><td></td>',
+    id, item, platforms;
+
+  // generating table headers
+  titles.forEach(function ( name ) {
+    result += '<td>' + name + '</td>';
+  });
+
+  result += '</tr></thead><tbody>';
+
+  for (id in api) {
+    item = api[id];
+    platforms = item.platforms || {};
+    result +='<tr><td>' + item.title + '</td>';
+
+    titles.forEach(function ( title ) {
+      var apiItem = platforms[title] || {},
+        enable = apiItem.enable;
+
+      result += '<td class="item-' + (enable ? 'enabled' : 'disabled') + '">'+ (enable? 'YES' : 'NO') + '</td>';
+    });
 
 
-function dataToHtml(data) {
-  return '';
+    result +='</tr>';
+  }
+
+  result += '</tbody></table>';
+
+  return result;
+}
+
+function saveHtml(html) {
+  var result = htmlTemplate.replace('<!-- TABLE  -->', html);
+  var target = __dirname + '/' + targetFile;
+
+  var old_result;
+  try {
+    old_result = fs.readFileSync(target, 'utf-8');
+  } catch (e) {}
+  if (old_result === result) {
+    console.log('File not changed');
+  } else {
+    fs.writeFileSync(target, result);
+    console.log('Write to file ' + targetFile);
+  }
+
 }

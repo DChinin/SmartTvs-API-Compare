@@ -7,8 +7,8 @@ exports.api = [
   {
     title: 'Browser engine',
     id: 0,
-    enable: 'Maple',
-    text: '',
+    enable: true,
+    text: 'Maple',
     link: ''
   },
   {
